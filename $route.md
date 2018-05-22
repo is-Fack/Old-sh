@@ -1,0 +1,1 @@
+$route 作为vue实例的一个响应式属性，是和你在data中写的属性本质上是一样的，都可以通过this的方式拿到。既然你可以监听data中的属性变化，同样也可以监听 $route 的变化。watch中监听的对象默认回调函数中的参数值就是newVal,oldVal。作为 $route 属性来说当然也就是 to 和 from 的概念了。
