@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        h1{
+            width: 100%;
+           font-size: 100px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+   <yi></yi>
+</div>
+</body>
+<script>
+
+    let con = Vue.component('yi',{
+        template:`
+        <div>
+        <div>11 </div>
+        {{zgld}}
+         <er :zi="fcz" @qu="gl"></er>
+        </div>
+
+        `,
+        data(){
+            return{
+                fcz:'雷',
+                zgld:''
+            }
+        },
+        methods:{
+            gl(val){
+               console.log(val);
+               this.zgld =val;
+            }
+        }
+    });
+
+    let con1 = Vue.component('er',{
+        props:['zi'],
+        template: `
+            <div @click="zcfs">{{zi}}</div>
+        `,
+        data(){
+            return{
+                zcf:'珈'
+            }
+        },
+        methods:{
+            zcfs(){
+                this.$emit('qu',this.zcf);
+            }
+        }
+    });
+
+    new Vue({
+        el:'#app'
+    })
+</script>
+</html>

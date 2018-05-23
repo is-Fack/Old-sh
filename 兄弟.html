@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <yi @yis="yiss"></yi>
+    <er :yild="yiData"></er>
+    {{zhongData}}
+</div>
+</body>
+<script>
+    let zhong = new Vue();
+    let con = Vue.component('yi',{
+        template:`
+        <div>
+          <p @click="yis">1</p>
+        </div>
+        `,
+        data(){
+            return{
+                data:'雷',
+                data2:'珈权'
+            }
+        },
+        methods:{
+            yis(){
+                this.$emit('yis',this.data);
+                zhong.$emit('zhongs',this.data2);
+            }
+        }
+    });
+    let con1 = Vue.component('er',{
+        props:['yild'],
+        template:`
+        <div>
+          <p>{{yild}}</p>
+
+        </div>
+
+        `
+    });
+    new Vue({
+        el:'#app',
+        data(){
+            return{
+                yiData:'',
+                zhongData:''
+            }
+        },
+        methods:{
+            yiss(item){
+                this.yiData = item;
+            }
+        },
+        created(){
+            zhong.$on('zhongs',(val) =>{
+                console.log(val);
+                this.zhongData = val;
+            });
+        }
+    })
+</script>
+</html>
